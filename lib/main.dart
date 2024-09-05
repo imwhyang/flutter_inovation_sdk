@@ -70,8 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
       // } on PlatformException catch (e) {
       //   _mssage = "Hello 异常了 ${e.message}";
       // }
+      _insureStart();
     });
-    _insureStart();
+
   }
 
   void _insureStart() async {
