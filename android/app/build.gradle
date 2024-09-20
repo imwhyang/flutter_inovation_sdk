@@ -39,20 +39,47 @@ android {
         applicationId "com.example.flutter_dajia_sdk04"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-//        minSdkVersion flutter.minSdkVersion
-//        targetSdkVersion flutter.targetSdkVersion//
-        minSdkVersion localProperties.getProperty("flutter.minSdkVersion").toInteger()
-        targetSdkVersion localProperties.getProperty("flutter.targetSdkVersion").toInteger()
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion//
+//        minSdkVersion localProperties.getProperty("flutter.minSdkVersion").toInteger()
+//        targetSdkVersion localProperties.getProperty("flutter.targetSdkVersion").toInteger()
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword 'djcx1234'
+            storeFile file('../sign/sign')
+            storePassword 'djcx1234'
+        }
+    }
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+            //代码混淆
+            minifyEnabled true
+            //代码压缩
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            //移除无用的resource文件
+            shrinkResources true
+            multiDexEnabled = true
         }
+        debug {
+            signingConfig signingConfigs.release
+            //代码混淆
+            minifyEnabled true
+            //代码压缩
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            //移除无用的resource文件
+            shrinkResources true
+            multiDexEnabled = true
+        }
+
     }
     packagingOptions {
         exclude 'META-INF/LICENSE'
@@ -75,6 +102,8 @@ configurations {
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
 dependencies {
-        implementation 'com.innovation.ai:breed-function-sdk-dajia-test:1.0.0-beta04'
+    compileOnly files("$flutterRoot/bin/cache/artifacts/engine/android-arm/flutter.jar")
+
+    implementation 'com.innovation.ai:breed-function-sdk-dajia-test:1.0.0-beta05'
 
 }

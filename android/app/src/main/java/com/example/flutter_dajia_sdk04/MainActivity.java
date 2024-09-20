@@ -49,34 +49,75 @@ public class MainActivity extends FlutterActivity {
             @Override
             public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
                 switch (call.method) {
+
+                    case "insureStartPoint":
+                        SDK.insuredEntrance(GsonUtils.fromJson(
+                                "{" +
+                                        "    \"deptCode\": \"COMP20230209HBSFGS/29\",\n" +
+                                        "    \"deptName\": \"大家财产保险/大家财产保险有限责任公司新疆分公司\",\n" +
+                                        "    \"insuranceId\": \"DAIDQOFWtf000000000715\",\n" +
+                                        "    \"insuranceName\": \"能繁母猪养殖保险\",\n" +
+                                        "    \"standardInspectionWay\": \"11\",\n" +
+                                        "    \"riskCode\": \"3220\",\n" +
+                                        "    \"riskName\": \"能繁母猪养殖保险\",\n" +
+                                        "    \"clauseCode\": \"322005\",\n" +
+                                        "    \"clauseName\": \"新疆中央财政补贴能繁母猪养殖保险条款\",\n" +
+                                        "    \"animalType\": \"1\",\n" +
+                                        "    \"insuranceMethod\": \"1\",\n" +
+                                        "    \"enterprisesId\": \"441581199807163134\",\n" +
+                                        "    \"enterprisesNames\": \"呃呃呃\",\n" +
+                                        "    \"enId\": \"441581199807163134\",\n" +
+                                        "    \"enName\": \"呃呃呃\",\n" +
+                                        "    \"breedMethod\": \"1\",\n" +
+                                        "    \"createUserId\": \"129001493\",\n" +
+                                        "    \"createUserName\": \"新疆农网1\",\n" +
+                                        "    \"province\": \"广东省\",\n" +
+                                        "    \"city\": \"深圳市\",\n" +
+                                        "    \"county\": \"南山区\",\n" +
+                                        "    \"town\": \"广东省\",\n" +
+                                        "    \"village\": \"\",\n" +
+                                        "    \"address\": \"南头街道深南大道10138号深圳市规划和自然资源局南山管理局\",\n" +
+                                        "    \"insureValidate\": \"1\",\n" +
+                                        "    \"livestockBreeds\": 204,\n" +
+                                        "    \"longitude\": \"116.4148720000000000\",\n" +
+                                        "    \"latitude\": \"40.0398630000000000\"\n" +
+                                        "}"
+                                , InsuredEntranceBean.class), MainActivity.this);
+                        result.success("Android " + android.os.Build.VERSION.RELEASE);
+                        break;
                     case "insureStart":
                         SDK.insuredEntrance(GsonUtils.fromJson(
                                 "{" +
-                                        "\"deptCode\": \"20221021LNSFGS/COMP20230209HBSFGS\",\n" +
-                                        "\"deptName\": \"大家财险SDK/河北省分公司\",\n" +
-                                        "\"insuranceId\":\"112233441003\"," +
-                                        "\"standardInspectionWay\":13," +
-                                        "\"riskCode\":\"202302905\"," +
-                                        "\"riskName\":\"辽宁中央政策性奶牛养殖保险\"," +
-                                        "\"clauseCode\":\"2023029005\"," +
-                                        "\"clauseName\":\"大家财险辽宁中央财政奶牛养殖保险\"," +
-                                        "\"animalType\":2," +
-                                        "\"livestockBreeds\":204," +//  203 育肥舍 204 能繁舍
-                                        "\"insuranceMethod\":\"1\"," +
-                                        "\"enterprisesId\":\"2409020001\"," +
-                                        "\"enterprisesNames\":\"wayne-personal\"," +
-                                        "\"breedMethod\":\"1\"," +
-                                        "\"createUserId\":\"20240902000101\"," +
-                                        "\"createUserName\":\"大家sdk机构号101\"," +
-                                        "\"longitude\": \"116.414777\"," +
-                                        "\"latitude\": \"40.03988\"," +
-                                        "\"address\": \"中国北京朝阳立水桥office\"," +
-                                        "\"province\": \"北京市\"," +
-                                        "\"city\": \"北京市\"," +
-                                        "\"county\": \"朝阳区\"," +
-                                        "\"town\": \"北苑路\"," +
-                                        "\"village\": \"立水桥\"" +
-                                        "}", InsuredEntranceBean.class), MainActivity.this);
+                                        "    \"deptCode\": \"COMP20230209HBSFGS/29\",\n" +
+                                        "    \"deptName\": \"大家财产保险/大家财产保险有限责任公司新疆分公司\",\n" +
+                                        "    \"insuranceId\": \"DAID5nIJHd000000000716\",\n" +
+                                        "    \"insuranceName\": \"奶牛养殖保险\",\n" +
+                                        "    \"standardInspectionWay\": \"13\",\n" +
+                                        "    \"riskCode\": \"3202\",\n" +
+                                        "    \"riskName\": \"奶牛养殖保险\",\n" +
+                                        "    \"clauseCode\": \"320204\",\n" +
+                                        "    \"clauseName\": \"新疆奶牛养殖保险条款\",\n" +
+                                        "    \"animalType\": \"2\",\n" +
+                                        "    \"livestockBreeds\": \"00\",\n" +
+                                        "    \"insuranceMethod\": \"1\",\n" +
+                                        "    \"enterprisesId\": \"441581199807163134\",\n" +
+                                        "    \"enterprisesNames\": \"畜脸\",\n" +
+                                        "    \"enId\": \"441581199807163134\",\n" +
+                                        "    \"enName\": \"畜脸\",\n" +
+                                        "    \"breedMethod\": \"1\",\n" +
+                                        "    \"createUserId\": \"129001493\",\n" +
+                                        "    \"createUserName\": \"新疆农网1\",\n" +
+                                        "    \"province\": \"广东省\",\n" +
+                                        "    \"city\": \"深圳市\",\n" +
+                                        "    \"county\": \"南山区\",\n" +
+                                        "    \"town\": \"广东省\",\n" +
+                                        "    \"village\": \"\",\n" +
+                                        "    \"address\": \"南头街道艺园路佳嘉豪商务大厦\",\n" +
+                                        "    \"insureValidate\": \"1\",\n" +
+                                        "    \"longitude\": \"116.4148720000000000\",\n" +
+                                        "    \"latitude\": \"40.0398630000000000\"\n" +
+                                        "}"
+                                , InsuredEntranceBean.class), MainActivity.this);
                         result.success("Android " + android.os.Build.VERSION.RELEASE);
                         break;
                 }

@@ -53,6 +53,27 @@ class _MyHomePageState extends State<MyHomePage> {
   var _mssage = "Hello";
   var channel = const MethodChannel('com.flutter.guide.MethodChannel');
 
+  void _startPoint() {
+    setState(() async {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+      _mssage = "Hello 正在启动点数，请稍等 ";
+      // try {
+      //   _mssage = "Hello 正在启动，请稍等 ";
+      //   // 通过方法通道调用Android的getNativeMessage方法
+      //   await channel.invokeMethod('insureStart');
+      //
+      // } on PlatformException catch (e) {
+      //   _mssage = "Hello 异常了 ${e.message}";
+      // }
+      _insureStartPoint();
+    });
+  }
+
   void _incrementCounter() {
     setState(() async {
       // This call to setState tells the Flutter framework that something has
@@ -61,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      _mssage = "Hello 正在启动，请稍等 ";
+      _mssage = "Hello 正在启动扫脸，请稍等 ";
       // try {
       //   _mssage = "Hello 正在启动，请稍等 ";
       //   // 通过方法通道调用Android的getNativeMessage方法
@@ -72,13 +93,21 @@ class _MyHomePageState extends State<MyHomePage> {
       // }
       _insureStart();
     });
-
   }
 
   void _insureStart() async {
     try {
       // 通过方法通道调用Android的getNativeMessage方法
       await channel.invokeMethod('insureStart');
+    } on PlatformException catch (e) {
+      _mssage = "Hello 启动异常了 ${e.message}";
+    }
+  }
+
+  void _insureStartPoint() async {
+    try {
+      // 通过方法通道调用Android的getNativeMessage方法
+      await channel.invokeMethod('insureStartPoint');
     } on PlatformException catch (e) {
       _mssage = "Hello 启动异常了 ${e.message}";
     }
@@ -125,6 +154,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_mssage    $_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            TextButton(
+                onPressed: _insureStart, child: const Text("开始扫脸")),
+            TextButton(
+                onPressed: _insureStartPoint, child: const Text("开始点数"))
+
           ],
         ),
       ),
