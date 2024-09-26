@@ -104,6 +104,8 @@ configurations {
 dependencies {
     compileOnly files("$flutterRoot/bin/cache/artifacts/engine/android-arm/flutter.jar")
 
-    implementation 'com.innovation.ai:breed-function-sdk-dajia-test:1.0.0-beta05'
+//    implementation 'com.innovation.ai:breed-function-sdk-dajia-test:1.0.0-beta06'
+    implementation 'com.innovation.ai:breed-function-sdk-dajia:1.0.0-beta01'
+
 
 }

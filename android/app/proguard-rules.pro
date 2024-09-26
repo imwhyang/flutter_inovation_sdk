@@ -564,6 +564,8 @@ public static java.lang.String TABLENAME;
 }
 
 # 保持应用包中的数据绑定类
+-keep class io.flutter.plugin.** { *; }
+
 -keep class cn.innovationai.breedsmart.databinding.** { *; }
 -keep class com.innovation.animal.insurancelib.databinding.** { *; }
 
